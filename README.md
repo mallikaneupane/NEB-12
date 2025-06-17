@@ -7,7 +7,7 @@ This is a basic HTML and CSS project created for my NEB Grade 12 assignment.
 - `styles.css`: CSS styling for the webpage
 
 ## 🚀 View Live Website
-👉 [Click here to view the site](https://mallikaneupane.github.io/Neb-11-/)
+👉 [Click here to view the site](https://mallikaneupane.github.io/Neb-12-/)
 
 ## 💡 Features
 - Clean and simple design
