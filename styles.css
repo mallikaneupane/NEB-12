@@ -1,39 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 20px;
+    line-height: 1.6;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-            margin: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        th {
-            background-color: #4CAF50; /* Green */
-            color: white;
-            padding: 12px;
-            text-align: left;
-        }
-        td {
-            background-color: #ffffff; /* White */
-            padding: 12px;
-            border-bottom: 1px solid #ddd; /* Gray */
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9; /* Light Gray */
-        }
-        tr:hover {
-            background-color: #f1f1f1; /* Lighter Gray on hover */
-        }
-        .total-row {
-            font-weight: bold;
-            background-color: #ffa500; /* Orange */
-            color: white;
-        }
-   
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+td {
+    background-color: #ffffff; /* White */
+    padding: 12px;
+    border-bottom: 1px solid #ddd; /* Gray */
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light Gray */
+}
+
+tr:hover {
+    background-color: #f1f1f1; /* Lighter Gray on hover */
+    transition: background-color 0.3s ease;
+}
+
+.total-row {
+    font-weight: bold;
+    background-color: #ffa500; /* Orange */
+    color: white;
+}
 
 header {
     background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -45,6 +51,7 @@ header {
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -56,11 +63,18 @@ nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s;
+    transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav ul li a:focus {
     color: #ffdd57;
+    outline: none;
+}
+
+nav ul li a:focus {
+    outline: 3px solid #ffdd57;
+    outline-offset: 3px;
 }
 
 section {
@@ -83,7 +97,7 @@ article {
     margin: 10px 0;
     padding: 15px;
     border-radius: 5px;
-    transition: transform 0.3s;
+    transition: transform 0.3s ease;
 }
 
 article:hover {
@@ -107,8 +121,27 @@ footer {
 footer a {
     color: #ffdd57;
     text-decoration: none;
+    transition: text-decoration 0.3s ease;
 }
 
 footer a:hover {
     text-decoration: underline;
 }
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+    section {
+        margin: 10px;
+        padding: 15px;
+    }
+    body {
+        margin: 10px;
+    }
+}
+
+        
