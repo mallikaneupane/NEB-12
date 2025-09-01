@@ -344,10 +344,608 @@
             </table>
         </article>
     </section>
+    <article>
+    <h3>ER Diagrams</h3>
+    <h4>Introduction</h4>
+    <p>ER Diagrams (Entity-Relationship Diagrams) are used to visually represent the structure of a database.</p>
+    <h4>Entity, Attributes, Relationships, Cardinality and Degree</h4>
+    <p>An <strong>Entity</strong> represents a real-world object or concept.</p>
+    <p><strong>Attributes</strong> are properties that describe entities.</p>
+    <p><strong>Relationships</strong> show how entities are connected.</p>
+    <p><strong>Cardinality</strong> defines the number of instances of one entity related to another (one-to-one, one-to-many, many-to-many).</p>
+    <p><strong>Degree</strong> indicates the number of entities involved in a relationship.</p>
 
-    <footer>
-        <p>© 2025 Database Topics Syllabus. All rights reserved.</p>
-        <p>Contact us at <a href="mailto:info@database.edu.np">info@database.edu.np</a></p>
-    </footer>
+    <h4>Symbols and Their Meaning</h4>
+    <ul>
+        <li><strong>Rectangle:</strong> Represents an entity.</li>
+        <li><strong>Oval:</strong> Represents an attribute.</li>
+        <li><strong>Diamond:</strong> Represents a relationship.</li>
+        <li><strong>Lines:</strong> Connect entities to relationships or attributes.</li>
+        <li><strong>Double Oval:</strong> Represents a multi-valued attribute.</li>
+        <li><strong>Dashed Oval:</strong> Represents a derived attribute.</li>
+        <li><strong>Double Diamond:</strong> Represents a weak relationship.</li>
+    </ul>
+</article>
+<article>
+    <h3>10. SQL: Data Definition Language (DDL) and Data Manipulation Language (DML)</h3>
+    <p><strong>SQL</strong> stands for Structured Query Language, the most widely used language to interact with relational databases. It helps create, manage, and manipulate databases efficiently.</p>
+
+    <h4>Data Definition Language (DDL)</h4>
+    <p>DDL commands define or modify the database structure. Think of it as designing the blueprint of a building before construction.</p>
+    <ul>
+        <li><strong>CREATE:</strong> Creates tables or other database objects. For example, creating a table to store student information.</li>
+        <li><strong>ALTER:</strong> Modifies existing tables, like adding a new column to track student email addresses.</li>
+        <li><strong>DROP:</strong> Deletes tables or objects permanently, just like demolishing a building.</li>
+        <li><strong>TRUNCATE:</strong> Quickly removes all data from a table without deleting the structure itself, similar to emptying a container.</li>
+    </ul>
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg" style="background:#fff; border:1px solid #ccc;">
+  <!-- User -->
+  <rect x="20" y="75" width="100" height="50" fill="#4CAF50" rx="10" ry="10" />
+  <text x="70" y="105" font-family="Arial" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold">User</text>
+  
+  <!-- Arrows to commands -->
+  <line x1="120" y1="100" x2="220" y2="100" stroke="#4CAF50" stroke-width="3" marker-end="url(#arrow)" />
+  
+  <!-- DDL Commands -->
+  <rect x="220" y="30" width="130" height="60" fill="#6a11cb" rx="10" ry="10"/>
+  <text x="285" y="55" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">DDL Commands</text>
+  <text x="285" y="75" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle">CREATE, ALTER, DROP</text>
+  
+  <!-- DML Commands -->
+  <rect x="220" y="110" width="130" height="60" fill="#2575fc" rx="10" ry="10"/>
+  <text x="285" y="135" font-family="Arial" font-size="14" fill="#fff" text-anchor="middle" font-weight="bold">DML Commands</text>
+  <text x="285" y="155" font-family="Arial" font-size="12" fill="#fff" text-anchor="middle">SELECT, INSERT, UPDATE, DELETE</text>
+  
+  <!-- Arrows from DDL and DML to Database -->
+  <line x1="350" y1="60" x2="450" y2="100" stroke="#6a11cb" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="350" y1="140" x2="450" y2="100" stroke="#2575fc" stroke-width="2" marker-end="url(#arrow)" />
+  
+  <!-- Database -->
+  <rect x="450" y="75" width="120" height="50" fill="#ffa500" rx="10" ry="10" />
+  <text x="510" y="105" font-family="Arial" font-size="16" fill="#fff" text-anchor="middle" font-weight="bold">Database</text>
+  
+  <!-- Arrowhead -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#4CAF50" />
+    </marker>
+  </defs>
+</svg>
+
+
+
+    <h4>Data Manipulation Language (DML)</h4>
+    <p>DML commands let you add, update, or retrieve data stored inside tables — just like using a spreadsheet to manage records.</p>
+    <ul>
+        <li><strong>SELECT:</strong> Fetches data from one or more tables. For example, showing all students who scored above 90%.</li>
+        <li><strong>INSERT:</strong> Adds new data. Like enrolling a new student by inserting their details.</li>
+        <li><strong>UPDATE:</strong> Changes existing data. For instance, updating a student's phone number.</li>
+        <li><strong>DELETE:</strong> Removes data from the table, like deleting a record of a student who has graduated.</li>
+    </ul>
+
+   
+    <h4>Real-life Example: Managing a Library Database</h4>
+    <p>Imagine you are a librarian. You use SQL commands to manage the library database:</p>
+    <ul>
+        <li>Create a table for books (<code>CREATE TABLE Books</code>).</li>
+        <li>Add new books (<code>INSERT INTO Books</code>).</li>
+        <li>Find all books by a specific author (<code>SELECT * FROM Books WHERE Author='J.K. Rowling'</code>).</li>
+        <li>Update book availability (<code>UPDATE Books SET Status='Available' WHERE BookID=101</code>).</li>
+        <li>Remove old/damaged books (<code>DELETE FROM Books WHERE BookID=105</code>).</li>
+    </ul>
+
+    <h4>Example SQL Commands:</h4>
+    <pre>
+-- Create a table for students
+CREATE TABLE Students (
+    ID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT,
+    Email VARCHAR(100)
+);
+
+-- Insert a new student
+INSERT INTO Students (ID, Name, Age, Email) 
+VALUES (1, 'John Doe', 20, 'john.doe@example.com');
+
+-- Select all students above 18 years
+SELECT * FROM Students WHERE Age &gt; 18;
+
+-- Update student's email
+UPDATE Students SET Email = 'john.newemail@example.com' WHERE ID = 1;
+
+-- Delete a student record
+DELETE FROM Students WHERE ID = 1;
+    </pre>
+</article>
+<section>
+  <h2>Functions in C</h2>
+
+  <article>
+    <h3>Introduction and Syntax</h3>
+    <p>A function is a block of code that performs a specific task. It helps break down complex programs into smaller, manageable parts.</p>
+    <pre><code>return_type function_name(parameter_list) {
+    // function body
+}</code></pre>
+  </article>
+
+  <article>
+    <h3>Purpose and Advantages</h3>
+    <ul>
+      <li>Reusability of code</li>
+      <li>Modularity and easy maintenance</li>
+      <li>Improves readability and debugging</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Components of a Function</h3>
+    <ul>
+      <li>Function Prototype (Declaration)</li>
+      <li>Function Definition (Body)</li>
+      <li>Function Call (Usage)</li>
+      <li>Return Statement</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Function Prototype</h3>
+    <p>Declares the function’s name, return type, and parameters to inform the compiler.</p>
+    <pre><code>int add(int, int);</code></pre>
+  </article>
+
+  <article>
+    <h3>Function Definition</h3>
+    <pre><code>int add(int a, int b) {
+    return a + b;
+}</code></pre>
+  </article>
+
+  <article>
+    <h3>Function Call</h3>
+    <pre><code>int result = add(5, 3);</code></pre>
+  </article>
+
+  <article>
+    <h3>Return Statement</h3>
+    <p>Ends the function and optionally returns a value.</p>
+    <pre><code>return value;</code></pre>
+  </article>
+
+  <article>
+    <h3>Types of Functions</h3>
+    <ul>
+      <li><strong>Library Functions:</strong> Predefined functions provided by C (e.g., printf(), scanf())</li>
+      <li><strong>User Defined Functions:</strong> Functions written by the programmer</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Passing Arguments</h3>
+    <p>Two methods to pass arguments:</p>
+    <ul>
+      <li><strong>Call by Value:</strong> Copies the value of the argument into the parameter.</li>
+      <li><strong>Call by Reference:</strong> Passes the address, allowing the function to modify the original variable.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Example: Call by Value</h3>
+    <pre><code>void swap(int x, int y) {
+    int temp = x;
+    x = y;
+    y = temp;
+}
+int main() {
+    int a = 5, b = 10;
+    swap(a, b);
+    printf("a = %d, b = %d", a, b); // Output: a = 5, b = 10 (no swap)
+}</code></pre>
+  </article>
+
+  <article>
+    <h3>Example: Call by Reference</h3>
+    <pre><code>void swap(int *x, int *y) {
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}
+int main() {
+    int a = 5, b = 10;
+    swap(&a, &b);
+    printf("a = %d, b = %d", a, b); // Output: a = 10, b = 5 (swapped)
+}</code></pre>
+  </article>
+
+  <article>
+    <h3>Variable Scope</h3>
+    <ul>
+      <li><strong>Local:</strong> Declared inside function/block, only accessible there.</li>
+      <li><strong>Global:</strong> Declared outside all functions, accessible throughout the program.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Storage Classes</h3>
+    <ul>
+      <li><strong>auto:</strong> Default for local variables.</li>
+      <li><strong>extern:</strong> Declares a global variable defined elsewhere.</li>
+      <li><strong>static:</strong> Preserves variable value between function calls.</li>
+      <li><strong>register:</strong> Suggests storing variable in CPU register for faster access.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Function with Array Example</h3>
+    <pre><code>void printArray(int arr[], int size) {
+    for(int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+}
+int main() {
+    int numbers[] = {1, 2, 3, 4};
+    printArray(numbers, 4); // Output: 1 2 3 4
+}</code></pre>
+  </article>
+
+  <article>
+    <h3>Recursive Function</h3>
+    <p>A function that calls itself to solve smaller instances of a problem.</p>
+    <pre><code>int factorial(int n) {
+    if(n == 0) return 1;
+    else return n * factorial(n - 1);
+}
+int main() {
+    printf("%d", factorial(5)); // Output: 120
+}</code></pre>
+    <p><strong>Advantages:</strong> Simplifies code for problems like factorial, Fibonacci, tree traversal.</p>
+    <p><strong>Disadvantages:</strong> Can lead to high memory use, risk of stack overflow.</p>
+  </article>
+</section>
+
+<section>
+  <h2>Structure and Union in C</h2>
+
+  <article>
+    <h3>Structure</h3>
+    <p>Used to group different data types under one name.</p>
+    <pre><code>struct Student {
+    int id;
+    char name[50];
+    float marks;
+};</code></pre>
+  </article>
+
+  <article>
+    <h3>Structure Size</h3>
+    <p>Size is sum of sizes of all members (considering padding).</p>
+  </article>
+
+  <article>
+    <h3>Accessing Members</h3>
+    <pre><code>struct Student s1;
+s1.id = 101;
+strcpy(s1.name, "John");
+s1.marks = 85.5;</code></pre>
+  </article>
+
+  <article>
+    <h3>Nested Structure</h3>
+    <pre><code>struct Date {
+    int day, month, year;
+};
+struct Student {
+    int id;
+    char name[50];
+    struct Date dob;
+};</code></pre>
+  </article>
+
+  <article>
+    <h3>Array of Structures</h3>
+    <pre><code>struct Student students[3];</code></pre>
+  </article>
+
+  <article>
+    <h3>Passing Structure to Function</h3>
+    <pre><code>void printStudent(struct Student s) {
+    printf("ID: %d\nName: %s\nMarks: %.2f", s.id, s.name, s.marks);
+}</code></pre>
+  </article>
+
+  <article>
+    <h3>Union</h3>
+    <p>Similar to structure but shares memory among members.</p>
+    <pre><code>union Data {
+    int i;
+    float f;
+    char str[20];
+};</code></pre>
+
+    <p><strong>Comparison with Structure:</strong></p>
+    <ul>
+      <li><strong>Structure:</strong> Allocates memory for all members.</li>
+      <li><strong>Union:</strong> Allocates memory only for the largest member.</li>
+    </ul>
+  </article>
+</section>
+
+<section>
+  <h2>Pointers in C</h2>
+
+  <article>
+    <h3>Introduction and Syntax</h3>
+    <p>A pointer stores the memory address of a variable.</p>
+    <pre><code>int *ptr;</code></pre>
+  </article>
+
+  <article>
+    <h3>Usage and Working</h3>
+    <p>Pointers allow indirect access and manipulation of variables via their addresses.</p>
+  </article>
+
+  <article>
+    <h3>Concept of Value and Address</h3>
+    <p>Use <code>&</code> to get address, and <code>*</code> to access value stored at an address.</p>
+  </article>
+
+  <article>
+    <h3>Declaration and Initialization</h3>
+    <pre><code>int x = 10;
+int *p = &x;</code></pre>
+  </article>
+
+  <article>
+    <h3>Pointer and Function Example</h3>
+    <pre><code>void increment(int *p) {
+    (*p)++;
+}
+int main() {
+    int a = 5;
+    increment(&a);
+    printf("%d", a); // Output: 6
+}</code></pre>
+  </article>
+
+  <article>
+    <h3>Call by Reference using Pointers</h3>
+    <pre><code>void swap(int *x, int *y) {
+    int temp = *x;
+    *x = *y;
+    *y = temp;
+}</code></pre>
+  </article>
+
+  <article>
+    <h3>Comparison: Call by Value vs Call by Reference</h3>
+    <ul>
+      <li>Call by Value passes copy, changes do not affect original variables.</li>
+      <li>Call by Reference passes address, changes affect original variables.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Pointer with Arrays Example</h3>
+    <pre><code>int arr[] = {1, 2, 3};
+int *p = arr;
+printf("%d", *(p + 1)); // Output: 2</code></pre>
+  </article>
+
+  <article>
+    <h3>Advantages and Disadvantages</h3>
+    <ul>
+      <li><strong>Advantages:</strong> Efficient array/string handling, dynamic memory, function arguments.</li>
+      <li><strong>Disadvantages:</strong> Complex syntax, risk of memory errors (dangling pointers).</li>
+    </ul>
+  </article>
+</section>
+
+<section>
+  <h2>File Handling in C</h2>
+
+  <article>
+    <h3>Concept of Data File</h3>
+    <p>Many applications require that information be written to or read
+from an auxillary storage device. Such information is stored on the
+storage device in the form of data file. Thus, data files allow us to
+store information permanently and to access later on and alter that
+information whenever necessary. In C, a large number of library
+functions is available for creating and processing data files. There
+are two different types of data files called stream-oriented (or
+standard) data files and system oriented data files. We shall study
+stream-orinted data files only in this lesson.</p>
+  </article>
+
+  <article>
+    <h3>Need for File Handling in C</h3>
+    <p>Files allow storage and retrieval of data beyond program execution.</p>
+  </article>
+
+  <article>
+    <h3>Types of Files</h3>
+    <ul>
+      <li><strong>Sequential Files:</strong> Data accessed in sequence.</li>
+      <li><strong>Random Files:</strong> Data accessed at any location.</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>File Handling Functions</h3>
+    <p><strong>fopen()</strong>: Opens a file.</p>
+    <pre><code>FILE *fopen(const char *filename, const char *mode);</code></pre>
+
+    <p><strong>fclose()</strong>: Closes a file.</p>
+    <pre><code>int fclose(FILE *stream);</code></pre>
+
+    <p><strong>getc()</strong>: Reads a character.</p>
+    <pre><code>int getc(FILE *stream);</code></pre>
+
+    <p><strong>putc()</strong>: Writes a character.</p>
+    <pre><code>int putc(int char, FILE *stream);</code></pre>
+
+    <p><strong>fprintf()</strong>: Writes formatted data.</p>
+    <pre><code>int fprintf(FILE *stream, const char *format, ...);</code></pre>
+
+    <p><strong>fscanf()</strong>: Reads formatted data.</p>
+    <pre><code>int fscanf(FILE *stream, const char *format, ...);</code></pre>
+
+    <p><strong>getw()</strong>: Reads a word (int).</p>
+    <pre><code>int getw(FILE *stream);</code></pre>
+
+    <p><strong>putw()</strong>: Writes a word (int).</p>
+    <pre><code>int putw(int word, FILE *stream);</code></pre>
+
+    <p><strong>fgets()</strong>: Reads a string.</p>
+    <pre><code>char *fgets(char *str, int n, FILE *stream);</code></pre>
+
+    <p><strong>fputs()</strong>: Writes a string.</p>
+    <pre><code>int fputs(const char *str, FILE *stream);</code></pre>
+
+    <p><strong>fread()</strong>: Reads block of data.</p>
+    <pre><code>size_t fread(void *ptr, size_t size, size_t nmemb, FILE *stream);</code></pre>
+
+    <p><strong>fwrite()</strong>: Writes block of data.</p>
+    <pre><code>size_t fwrite(const void *ptr, size_t size, size_t nmemb, FILE *stream);</code></pre>
+
+    <p><strong>remove()</strong>: Deletes a file.</p>
+    <pre><code>int remove(const char *filename);</code></pre>
+
+    <p><strong>rename()</strong>: Renames a file.</p>
+    <pre><code>int rename(const char *oldname, const char *newname);</code></pre>
+  </article>
+
+  <article>
+    <h3>Random Access Functions</h3>
+    <p><strong>fseek()</strong>: Sets file position.</p>
+    <pre><code>int fseek(FILE *stream, long offset, int whence);</code></pre>
+
+    <p><strong>rewind()</strong>: Sets position to start of file.</p>
+    <pre><code>void rewind(FILE *stream);</code></pre>
+
+    <p><strong>ftell()</strong>: Returns current file position.</p>
+    <pre><code>long ftell(FILE *stream);</code></pre>
+  </article>
+
+  <article>
+    <h3>File Opening Modes</h3>
+    <ul>
+      <li><strong>r</strong>: Read</li>
+      <li><strong>r+</strong>: Read and write</li>
+      <li><strong>w</strong>: Write (create new)</li>
+      <li><strong>w+</strong>: Read and write (create new)</li>
+      <li><strong>a</strong>: Append (write at end)</li>
+      <li><strong>a+</strong>: Read and append</li>
+    </ul>
+  </article>
+
+  <article>
+    <h3>Steps to Work with File in C</h3>
+    <ol>
+      <li>Define file pointer: <code>FILE *fp;</code></li>
+      <li>Open file with mode: <code>fp = fopen("file.txt", "r");</code></li>
+      <li>Perform read/write/append operations</li>
+      <li>Close file: <code>fclose(fp);</code></li>
+    </ol>
+  </article>
+
+  <article>
+    <h3>Example: Reading Data from File</h3>
+    <pre><code>FILE *fp = fopen("data.txt", "r");
+if(fp == NULL) {
+    printf("File not found");
+    return 1;
+}
+char c;
+while((c = getc(fp)) != EOF) {
+    putchar(c);
+}
+fclose(fp);</code></pre>
+  </article>
+
+  <article>
+    <h3>Example: Writing Data to File</h3>
+    <pre><code>FILE *fp = fopen("data.txt", "w");
+if(fp == NULL) {
+    printf("Cannot open file");
+    return 1;
+}
+fprintf(fp, "Hello World\n");
+fclose(fp);</code></pre>
+  </article>
+
+  <article>
+  <h3>End of File (EOF) in C</h3>
+  <p><strong>EOF</strong> stands for <em>End Of File</em>. It is a special constant in C that indicates no more data is available to read from a file or input stream.</p>
+
+  <h4>What is EOF?</h4>
+  <p>When reading a file, functions like <code>getc()</code> or <code>fscanf()</code> return <code>EOF</code> once the file’s content has been completely read. It signals that the program has reached the logical end of the file.</p>
+
+  <h4>EOF Value</h4>
+  <p>EOF is typically defined as <code>-1</code> in <code>stdio.h</code>. It is different from any valid character read from the file (since valid characters are unsigned).</p>
+
+  <h4>Why is EOF Important?</h4>
+  <ul>
+    <li>It prevents reading beyond the file’s content, avoiding errors or undefined behavior.</li>
+    <li>Allows loops to read data until the file ends.</li>
+    <li>Helps in checking for file reading errors.</li>
+  </ul>
+
+  <h4>How to Detect EOF?</h4>
+  <p>Commonly, EOF is detected when a file reading function returns <code>EOF</code>. For example:</p>
+  <pre><code>int c;
+FILE *fp = fopen("file.txt", "r");
+if(fp == NULL) {
+    printf("Unable to open file.");
+    return 1;
+}
+while ((c = getc(fp)) != EOF) {
+    putchar(c);  // Print each character until EOF
+}
+fclose(fp);</code></pre>
+
+  <h4>Using <code>feof()</code> Function</h4>
+  <p>The function <code>feof(FILE *stream)</code> returns a non-zero value if the EOF indicator associated with the stream is set.</p>
+  <p>Example:</p>
+  <pre><code>FILE *fp = fopen("file.txt", "r");
+if (fp == NULL) return 1;
+int c;
+while (1) {
+    c = getc(fp);
+    if (c == EOF) break;
+    putchar(c);
+}
+if (feof(fp)) {
+    printf("\nReached the end of file.\n");
+} else {
+    printf("\nError reading file.\n");
+}
+fclose(fp);</code></pre>
+
+  <h4>Common Mistake: Checking EOF Before Reading</h4>
+  <p>Do <strong>not</strong> use <code>feof()</code> to control reading loops because it only returns true <em>after</em> an attempt to read past EOF.</p>
+  <p>Example of a wrong approach:</p>
+  <pre><code>while (!feof(fp)) {
+    c = getc(fp);
+    // This may process EOF twice or cause errors
+}</code></pre>
+
+  <h4>EOF in Keyboard Input</h4>
+  <p>EOF can also be sent manually from the keyboard:</p>
+  <ul>
+    <li>On Windows, press <kbd>Ctrl + Z</kbd> then Enter.</li>
+    <li>On Unix/Linux/Mac, press <kbd>Ctrl + D</kbd>.</li>
+  </ul>
+  <p>This signals EOF when reading input from the console.</p>
+
+  <h4>Summary</h4>
+  <ul>
+    <li>EOF is a marker for the end of input.</li>
+    <li>It helps safely terminate file reading loops.</li>
+    <li>Always check for EOF by testing the return value of input functions.</li>
+    <li><code>feof()</code> tells if EOF has been reached but only after a read operation fails.</li>
+  </ul>
+</article>
+</section>
+
 </body>
 </html>
